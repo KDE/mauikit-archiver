@@ -1,0 +1,34 @@
+maintainer: milohr
+fancyname: MauiKit Archiver
+description: QtQuick plugin for online archived/compressed files management
+platforms:
+    - name: Linux
+    - name: FreeBSD
+    - name: Android
+    - name: iOS
+      note: maintainer needed
+    - name: Windows
+      note: maintainer needed
+    - name: macOS
+      note: maintainer needed
+public_lib: true
+deprecated: false
+type: functional
+release: true
+logo: logo.png
+irc: '#kde-maui'
+mailinglist: '' # do we have one?
+group: mauikit
+qdoc: false
+public_doc_dir:
+    - docs
+public_source_dirs:  # optional, default to src, must be a list
+  - src/code
+  - src/controls.6
+public_example_dirs: examples
+libraries:
+    - cmake: MauiKit4::Archiver
+cmakename: MauiKitArchiver4
+
+group_info:
+    name: mauikit
