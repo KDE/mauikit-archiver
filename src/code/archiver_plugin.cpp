@@ -24,7 +24,8 @@ void ArchiverPlugin::registerTypes(const char *uri)
     //     return accounts;
     // });
     
-   qmlRegisterType<CompressedFile>(uri, 1, 0, "CompressedFile");
+    qmlRegisterType<CompressedFile>(uri, 1, 0, "CompressedFile");
+    qmlRegisterSingletonType<StaticArchive>(uri, 1, 0, "StaticArchive", &StaticArchive::qmlInstance);
 
     
     // qmlRegisterType(componentUrl(QStringLiteral("AccountsMenuItem.qml")), uri, 1, 0, "AccountsMenuItem");

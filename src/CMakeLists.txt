@@ -20,6 +20,7 @@ set(headers
 
 ecm_target_qml_sources(${LIB_NAME} SOURCES
     controls/ArchivePage.qml
+    controls/ExtractDialog.qml
     controls/NewArchiveDialog.qml)
 
 target_sources(${LIB_NAME}

@@ -12,7 +12,7 @@ Maui.Page
 {
 
     id: control
-    title: _manager.model.fileName 
+    title: _manager.fileName
 
     property alias url : _manager.url
 
@@ -72,7 +72,7 @@ Maui.Page
         Maui.ToolButtonMenu
         {
             icon.name:  "archive-extract"
-            enabled: _manager.model.opened
+            enabled: _manager.opened
 
             MenuItem
             {
@@ -88,7 +88,7 @@ Maui.Page
         ToolButton
         {
             icon.name: "archive-insert"
-            enabled: _manager.model.opened
+            enabled: _manager.opened
             onClicked: control.insertFiles()
         }
     ]
@@ -98,15 +98,15 @@ Maui.Page
         ToolButton
         {
             icon.name: "go-up"
-            onClicked: _manager.model.goUp()
-            enabled: _manager.model.canGoUp
+            onClicked: _manager.goUp()
+            enabled: _manager.canGoUp
         },
 
         ToolButton
         {
             icon.name: "folder-root"
-            onClicked: _manager.model.goToRoot()
-            enabled: _manager.model.opened
+            onClicked: _manager.goToRoot()
+            enabled: _manager.opened
         },
 
         Maui.ToolButtonMenu
@@ -156,7 +156,6 @@ Maui.Page
             filterCaseSensitivity: Qt.CaseInsensitive
             list: _manager.model
         }
-
 
         holder.visible: _browser.count === 0
         holder.emoji: "archive-insert"
@@ -268,7 +267,7 @@ Maui.Page
             {
                 var urls = drop.urls.join(",").split(",")
                 console.log("DROP URLS", urls )
-                _manager.model.addFiles(urls, _manager.model.currentPath);
+                _manager.addFiles(urls, _manager.currentPath);
             }
 
         }
@@ -278,11 +277,11 @@ Maui.Page
     {
         if(item.isdir === "true")
         {
-            _manager.model.openDir(item.path)
+            _manager.openDir(item.path)
 
         }else
         {
-            var url = _manager.model.temporaryFile(item.path)
+            var url = _manager.temporaryFile(item.path)
             previewFile(url)
         }
     }
@@ -294,7 +293,7 @@ Maui.Page
         dialog.settings.filterType= FM.FMList.NONE
         dialog.callback = (paths) => {
 
-            _manager.model.addFiles(paths, _manager.model.currentPath);
+            _manager.addFiles(paths, _manager.currentPath);
 
         }
 
