@@ -6,9 +6,13 @@ remove_definitions(-DQT_NO_CAST_FROM_ASCII -DQT_STRICT_ITERATORS -DQT_NO_CAST_FR
 
 set(LIB_NAME MauiKitArchiver${MAUI_MAJOR_VERSION})
 
+add_library(${LIB_NAME} SHARED)
+
 ecm_add_qml_module(${LIB_NAME}
 URI "org.mauikit.archiver"
-CLASS_NAME ArchiverPlugin)
+CLASS_NAME ArchiverPlugin
+NO_PLUGIN_OPTIONAL
+    NO_GENERATE_PLUGIN_SOURCE)
 
 set(sources
     code/archiver_plugin.cpp
@@ -23,9 +27,13 @@ ecm_target_qml_sources(${LIB_NAME} SOURCES
     controls/ExtractDialog.qml
     controls/NewArchiveDialog.qml)
 
-target_sources(${LIB_NAME}
+    target_sources(${LIB_NAME}plugin
     PRIVATE
     ${sources})
+
+target_sources(${LIB_NAME}
+    PRIVATE
+     code/moduleinfo.cpp)
 
 add_library(MauiKit${MAUI_MAJOR_VERSION}::Archiver ALIAS MauiKitArchiver${MAUI_MAJOR_VERSION})
 
@@ -44,7 +52,7 @@ if(ANDROID)
     target_link_libraries(${LIB_NAME} PRIVATE Qt${QT_MAJOR_VERSION}::AndroidExtras)
 endif()
 
-target_link_libraries(${LIB_NAME}
+target_link_libraries(${LIB_NAME}plugin
     PRIVATE
     Qt${QT_MAJOR_VERSION}::Core
     Qt${QT_MAJOR_VERSION}::Quick
@@ -56,6 +64,11 @@ target_link_libraries(${LIB_NAME}
     KF${KF_MAJOR_VERSION}::CoreAddons
     MauiKit4
     MauiKit4::FileBrowsing)
+
+    target_link_libraries(${LIB_NAME}
+    PRIVATE
+    Qt${QT_MAJOR_VERSION}::Core
+    KF${KF_MAJOR_VERSION}::CoreAddons)
 
 ecm_finalize_qml_module(${LIB_NAME} DESTINATION ${KDE_INSTALL_QMLDIR})
 

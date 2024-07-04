@@ -13,7 +13,7 @@ class KArchiveFile;
 class CompressedFile;
 class CompressedFileModel : public MauiList
 {
-    Q_OBJECT  
+    Q_OBJECT
 
 public:
     explicit CompressedFileModel(CompressedFile *parent);
@@ -23,7 +23,7 @@ public:
 
 private:
     CompressedFile *m_file;
-    FMH::MODEL_LIST m_list;    
+    FMH::MODEL_LIST m_list;
 };
 
 class CompressedFile : public QObject
