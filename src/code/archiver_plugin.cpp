@@ -16,28 +16,15 @@ void ArchiverPlugin::registerTypes(const char *uri)
     #endif
     
     Q_ASSERT(QLatin1String(uri) == QLatin1String("org.mauikit.archiver"));
-
-    // qmlRegisterSingletonType<MauiAccounts>(uri, 1, 0, "Accounts", [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
-    //     Q_UNUSED(scriptEngine)
-    //     auto accounts = MauiAccounts::instance();
-    //     engine->setObjectOwnership(accounts, QQmlEngine::CppOwnership);
-    //     return accounts;
-    // });
     
     qmlRegisterType<CompressedFile>(uri, 1, 0, "CompressedFile");
     qmlRegisterSingletonType<StaticArchive>(uri, 1, 0, "StaticArchive", &StaticArchive::qmlInstance);
-
-    
-    // qmlRegisterType(componentUrl(QStringLiteral("AccountsMenuItem.qml")), uri, 1, 0, "AccountsMenuItem");
-    // qmlRegisterType(componentUrl(QStringLiteral("AccountsDialog.qml")), uri, 1, 0, "AccountsDialog");
-    // qmlRegisterType(componentUrl(QStringLiteral("CredentialsDialog.qml")), uri, 1, 0, "CredentialsDialog");
 }
 
 void ArchiverPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 {
     Q_UNUSED(uri);
     Q_UNUSED(engine);
-    
 }
 
 QUrl ArchiverPlugin::componentUrl(const QString &fileName) const

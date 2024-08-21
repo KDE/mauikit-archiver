@@ -9,9 +9,12 @@ set(LIB_NAME MauiKitArchiver${MAUI_MAJOR_VERSION})
 add_library(${LIB_NAME} SHARED)
 
 ecm_add_qml_module(${LIB_NAME}
-URI "org.mauikit.archiver"
-CLASS_NAME ArchiverPlugin
-NO_PLUGIN_OPTIONAL
+    URI "org.mauikit.archiver"
+    CLASS_NAME ArchiverPlugin
+    DEPENDENCIES
+    "org.mauikit.controls"
+    "org.mauikit.filebrowsing"
+    NO_PLUGIN_OPTIONAL
     NO_GENERATE_PLUGIN_SOURCE)
 
 set(sources
@@ -27,13 +30,13 @@ ecm_target_qml_sources(${LIB_NAME} SOURCES
     controls/ExtractDialog.qml
     controls/NewArchiveDialog.qml)
 
-    target_sources(${LIB_NAME}plugin
+target_sources(${LIB_NAME}plugin
     PRIVATE
     ${sources})
 
 target_sources(${LIB_NAME}
     PRIVATE
-     code/moduleinfo.cpp)
+    code/moduleinfo.cpp)
 
 add_library(MauiKit${MAUI_MAJOR_VERSION}::Archiver ALIAS MauiKitArchiver${MAUI_MAJOR_VERSION})
 
@@ -48,10 +51,6 @@ target_include_directories(${LIB_NAME}
 
 target_include_directories(${LIB_NAME} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_CURRENT_BINARY_DIR};>")
 
-if(ANDROID)
-    target_link_libraries(${LIB_NAME} PRIVATE Qt${QT_MAJOR_VERSION}::AndroidExtras)
-endif()
-
 target_link_libraries(${LIB_NAME}plugin
     PRIVATE
     Qt${QT_MAJOR_VERSION}::Core
@@ -65,7 +64,7 @@ target_link_libraries(${LIB_NAME}plugin
     MauiKit4
     MauiKit4::FileBrowsing)
 
-    target_link_libraries(${LIB_NAME}
+target_link_libraries(${LIB_NAME}
     PRIVATE
     Qt${QT_MAJOR_VERSION}::Core
     KF${KF_MAJOR_VERSION}::CoreAddons)
