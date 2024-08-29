@@ -2,6 +2,7 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QSettings>
 
 #include <MauiKit4/Core/fmh.h>
 #include <MauiKit4/Core/mauilist.h>
@@ -11,6 +12,31 @@ class KArchive;
 class KArchiveFile;
 
 class CompressedFile;
+
+class Compressor : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(QString defaultSaveDir READ defaultSaveDir WRITE setDefaultSaveDir NOTIFY defaultSaveDirChanged)
+
+public:
+    Compressor(QObject * parent = nullptr);
+    ~Compressor();
+
+    QString defaultSaveDir() const;
+    void setDefaultSaveDir(QString defaultSaveDir);
+
+public Q_SLOTS:
+    bool compress(const QStringList &files, const QUrl &where, const QString &fileName, const int &compressTypeSelected);
+
+private:
+    QString m_defaultSaveDir;
+    QSettings *m_settings;
+
+Q_SIGNALS:
+    void compressionFinished(const QString &url, bool ok);
+    void defaultSaveDirChanged(QString defaultSaveDir);
+};
+
 class CompressedFileModel : public MauiList
 {
     Q_OBJECT
@@ -75,7 +101,6 @@ private:
 
 public Q_SLOTS:
     void extract(const QUrl &where, const QString &directory = QString());
-    bool compress(const QStringList &files, const QUrl &where, const QString &fileName, const int &compressTypeSelected);
 
     void openDir(const QString &path);
     void goUp();
@@ -88,6 +113,7 @@ public Q_SLOTS:
     bool addFiles(const QStringList &urls, const QString &path);
 
     bool extractFiles(const QStringList &urls, const QString &where);
+    bool compress(const QStringList &files, const QUrl &where, const QString &fileName, const int &compressTypeSelected);
 
     void setCurrentPath(QString currentPath);
 
@@ -101,7 +127,6 @@ Q_SIGNALS:
     void canGoUpChanged(bool canGoUp);
     void openedChanged(bool opened);
 };
-
 
 class StaticArchive : public QObject
 {
@@ -120,6 +145,5 @@ public:
     }
 
 public Q_SLOTS:
-    static bool extract(QUrl url, QUrl where, QString dir);
-
+    static bool extract(QUrl url, QUrl where, QString dir);    
 };

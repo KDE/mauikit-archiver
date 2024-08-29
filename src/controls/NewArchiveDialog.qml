@@ -1,25 +1,51 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
-import org.mauikit.controls 1.3 as Maui
-import org.mauikit.filebrowsing 1.3 as FM
+import org.mauikit.controls as Maui
+import org.mauikit.filebrowsing as FM
 
-import org.kde.arca 1.0 as Arca
+import org.mauikit.archiver as Arc
 
 Maui.FileListingDialog
 {
     id: control
 
+    onOpened: _archiveNameField.forceActiveFocus()
+
+    signal done(var files, string path, string name, int type)
+
+    /**
+      *@brief The preferred location where the final archive file will be saved at
+      */
+    property string destination : _compressor.defaultSaveDir
+
+    /**
+      *@brief The type fo archive. The possible options are:
+      0 - ZIP
+      1 - TAR
+      2 - 7ZIP
+      3 - AR
+      */
+    property int type : 0
+    onTypeChanged:
+    {
+        control.checkExistance(_archiveNameField.text, _locationField.text, control.extensionName(control.type))
+    }
+
     persistent: false
 
-    message: i18n("Create a new archive file.")
+    message: i18np("Compress %1 file into a new archive", "Compress %1 files into a new archive", urls.length)
 
     actions:[
         Action
         {
             text: i18n("Cancel")
-            onTriggered: close()
+            onTriggered:
+            {
+                control.clear()
+                close()
+            }
         },
         Action
         {
@@ -30,6 +56,7 @@ Maui.FileListingDialog
 
                 if(!ok)
                 {
+                    control.alert(i18n("Some error occured. Maybe current user does not have permission for writing in this directory."))
                     return
                 }else
                 {
@@ -40,15 +67,31 @@ Maui.FileListingDialog
         }
     ]
 
-    onOpened: _archiveNameField.forceActiveFocus()
-
-
-    signal done(var files, string path, string name, int type)
-
-    property int type : 0
-    onTypeChanged:
+    Arc.Compressor
     {
-        control.checkExistance(_archiveNameField.text, _locationField.text, control.extensionName(control.type))
+        id: _compressor
+        onCompressionFinished: (url, ok) =>
+                               {
+                                   if(ok)
+                                   {
+                                       control.clear()
+                                       control.close()
+                                   }else
+                                   {
+                                       return
+                                   }
+
+                                   var cb = ()=>
+                                   {
+                                       FM.FM.openUrl(url)
+                                   }
+
+                                   Maui.App.rootComponent.notify("application-x-archive",
+                                                                 ok ? i18n("File compressed successfully") : i18n("Failed to compress"),
+                                                                 url,
+                                                                 cb,
+                                                                 i18n("Open"))
+                               }
     }
 
     TextField
@@ -68,7 +111,7 @@ Maui.FileListingDialog
         id: _locationField
         Layout.fillWidth: true
         placeholderText: i18n("Location")
-        text: Arca.Arc.defaultSaveDir
+        text: control.destination
 
         onTextChanged:
         {
@@ -119,7 +162,7 @@ Maui.FileListingDialog
         if(name.length === 0)
         {
             control.alert(i18n("File name can not be empty."), 2)
-            return fals
+            return false
         }
 
         var file = path+"/"+name+extension
@@ -146,5 +189,17 @@ Maui.FileListingDialog
         }
         return extension;
     }
+
+    function compress()
+    {
+        _compressor.compress(control.urls, _locationField.text, _archiveNameField.text, control.type)
+    }
+
+    function clear()
+    {
+        _archiveNameField.clear()
+        control.urls = []
+    }
+
 }
 

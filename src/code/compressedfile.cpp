@@ -222,7 +222,20 @@ bool CompressedFile::addFile(const QString &url, const QString &path)
 bool CompressedFile::extractFiles(const QStringList &urls, const QString &where)
 {
     return false;
+}
 
+bool CompressedFile::compress(const QStringList &files, const QUrl &where, const QString &fileName, const int &compressTypeSelected)
+{
+    auto compressor = new Compressor();
+    connect(compressor, &Compressor::compressionFinished, this, [this, compressor](QString url, bool ok)
+            {
+                if(ok)
+                    this->setUrl(QUrl::fromLocalFile(url));
+
+                Q_EMIT compressionFinished(url, ok);
+                compressor->deleteLater();
+            });
+  return compressor->compress(files, where, fileName, compressTypeSelected);
 }
 
 bool CompressedFile::extractFile(const QString &url, const QString &where)
@@ -274,7 +287,16 @@ void CompressedFile::extract(const QUrl &where, const QString &directory)
  *  CompressTypeSelected is an integer and has to be acorrding with order in Dialog.qml
  *
  */
-bool CompressedFile::compress(const QStringList &files, const QUrl &where, const QString &fileName, const int &compressTypeSelected)
+Compressor::Compressor(QObject *parent) : QObject(parent)
+    ,m_defaultSaveDir(FMStatic::DocumentsPath)
+    ,m_settings(new QSettings(QStringLiteral("org.mauikit.archiver"), "", this))
+{
+    m_settings->beginGroup("General");
+    m_defaultSaveDir = m_settings->value("DefaultSaveDir", m_defaultSaveDir).toString();
+    m_settings->endGroup();
+}
+
+bool Compressor::compress(const QStringList &files, const QUrl &where, const QString &fileName, const int &compressTypeSelected)
 {
     auto fileWriter = [&where](KArchive *archive, QFile &file) -> bool
     {
@@ -485,12 +507,7 @@ bool CompressedFile::compress(const QStringList &files, const QUrl &where, const
            // kzip->writeData("Hello", sizeof("Hello"));
            // kzip->finishingWriting();
 
-    if(!error)
-    {
-        this->setUrl(QUrl::fromLocalFile(fileUrl));
-    }
-
-    Q_EMIT compressionFinished(fileUrl, !error);
+    Q_EMIT compressionFinished(QUrl::fromLocalFile(fileUrl).toString(), !error);
     return error;
 }
 
@@ -568,12 +585,35 @@ CompressedFileModel *CompressedFile::model() const
 Q_GLOBAL_STATIC(StaticArchive, appInstance)
 StaticArchive::StaticArchive(QObject *parent) : QObject(parent)
 {
-
 }
 
 StaticArchive *StaticArchive::instance()
 {
     return appInstance();
+}
+
+QString Compressor::defaultSaveDir() const
+{
+    return m_defaultSaveDir;
+}
+
+void Compressor::setDefaultSaveDir(QString defaultSaveDir)
+{
+    if (m_defaultSaveDir == defaultSaveDir)
+        return;
+
+    m_defaultSaveDir = defaultSaveDir;
+
+    m_settings->beginGroup("General");
+    m_settings->setValue("DefaultSaveDir", m_defaultSaveDir);
+    m_settings->endGroup();
+
+    Q_EMIT defaultSaveDirChanged(m_defaultSaveDir);
+}
+
+Compressor::~Compressor()
+{
+    m_settings->sync();
 }
 
 bool StaticArchive::extract(QUrl url, QUrl where, QString dir)

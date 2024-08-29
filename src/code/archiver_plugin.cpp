@@ -11,12 +11,13 @@
 
 void ArchiverPlugin::registerTypes(const char *uri)
 {
-    #if defined(Q_OS_ANDROID)
+#if defined(Q_OS_ANDROID)
     QResource::registerResource(QStringLiteral("assets:/android_rcc_bundle.rcc"));
-    #endif
+#endif
     
     Q_ASSERT(QLatin1String(uri) == QLatin1String("org.mauikit.archiver"));
     
+    qmlRegisterType<Compressor>(uri, 1, 0, "Compressor");
     qmlRegisterType<CompressedFile>(uri, 1, 0, "CompressedFile");
     qmlRegisterSingletonType<StaticArchive>(uri, 1, 0, "StaticArchive", &StaticArchive::qmlInstance);
 }
