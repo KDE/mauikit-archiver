@@ -230,12 +230,12 @@ bool CompressedFile::compress(const QStringList &files, const QUrl &where, const
     connect(compressor, &Compressor::compressionFinished, this, [this, compressor](QString url, bool ok)
             {
                 if(ok)
-                    this->setUrl(QUrl::fromLocalFile(url));
+                    this->setUrl(url);
 
                 Q_EMIT compressionFinished(url, ok);
                 compressor->deleteLater();
             });
-  return compressor->compress(files, where, fileName, compressTypeSelected);
+    return compressor->compress(files, where, fileName, compressTypeSelected);
 }
 
 bool CompressedFile::extractFile(const QString &url, const QString &where)
@@ -296,14 +296,23 @@ Compressor::Compressor(QObject *parent) : QObject(parent)
     m_settings->endGroup();
 }
 
+static std::vector<std::string> QStringList_to_VectorString(const QList<QString>& qlist) {
+    std::vector<std::string> result(qlist.size());
+    for (int i=0; i<qlist.size(); i++) {
+        result[i] = qlist.at(i).toUtf8().data();
+    }
+    return result;
+}
+
 bool Compressor::compress(const QStringList &files, const QUrl &where, const QString &fileName, const int &compressTypeSelected)
 {
-    auto fileWriter = [&where](KArchive *archive, QFile &file) -> bool
+    QString commonPath = "";
+    auto fileWriter = [&commonPath](KArchive *archive, QFile &file) -> bool
     {
         if(!archive)
             return false;
 
-        return archive->writeFile(file.fileName().remove(where.toLocalFile(), Qt::CaseSensitivity::CaseSensitive), // Mirror file path in compressed file from current directory
+        return archive->writeFile(file.fileName().remove(commonPath, Qt::CaseSensitivity::CaseSensitive), // Mirror file path in compressed file from current directory
                                   file.readAll(),
                                   0100775,
                                   QFileInfo(file).owner(),
@@ -313,10 +322,14 @@ bool Compressor::compress(const QStringList &files, const QUrl &where, const QSt
                                   QDateTime());
     };
 
-    auto dirWriter = [&fileWriter](KArchive *archive, QDirIterator &dir, bool &error)
+    auto dirWriter = [&fileWriter](KArchive *archive, QDirIterator &dir) -> bool
     {
-        if(!archive)
-            return;
+        bool ok = false;
+
+        if(!archive)            
+        {
+            return ok;
+        }
 
         while (dir.hasNext())
         {
@@ -330,17 +343,16 @@ bool Compressor::compress(const QStringList &files, const QUrl &where, const QSt
                 if (!file.isOpen())
                 {
                     qDebug() << "ERROR. CURRENT USER DOES NOT HAVE PEMRISSION FOR WRITE IN THE CURRENT DIRECTORY.";
-                    error = true;
                     continue;
                 }
 
-                error = fileWriter(archive, file);
-
+                ok = fileWriter(archive, file);
                        // WriteFile returns if the file was written or not,
                        // but this function returns if some error occurs so for this reason it is needed to toggle the value
-                error = !error;
             }
         }
+
+        return ok;
     };
 
     auto url = [&where, &fileName](const int &type) -> QString
@@ -357,16 +369,79 @@ bool Compressor::compress(const QStringList &files, const QUrl &where, const QSt
         return QUrl(where.toString() + "/" + fileName + format).toLocalFile();
     };
 
-    auto openCheck = [](KArchive *archive)
+    auto commonPathFunc = [] (const std::vector<std::string> & dirs) -> std::string
     {
-        archive->open(QIODevice::ReadWrite);
-        assert(archive->isOpen() == true);
+        std::vector<std::string>::const_iterator vsi = dirs.begin( ) ;
+        int maxCharactersCommon = vsi->length( ) ;
+        std::string compareString = *vsi ;
+        for ( vsi = dirs.begin( ) + 1 ; vsi != dirs.end( ) ; vsi++ ) {
+            std::pair<std::string::const_iterator , std::string::const_iterator> p =
+                std::mismatch( compareString.begin( ) , compareString.end( ) , vsi->begin( ) ) ;
+            if (( p.first - compareString.begin( ) ) < maxCharactersCommon )
+                maxCharactersCommon = p.first - compareString.begin( ) ;
+        }
+        std::string::size_type found = compareString.rfind( '/' , maxCharactersCommon ) ;
+        return compareString.substr( 0 , found ) ;
     };
 
-    bool error = true;
+    commonPath = QString::fromStdString(commonPathFunc( QStringList_to_VectorString(files) )).remove("file://");
+
+    qDebug() << "The Common path is << " << commonPath;
+
+    auto openCheck = [](KArchive *archive) -> bool
+    {
+        if(!archive)
+            return false;
+
+        archive->open(QIODevice::ReadWrite);
+        return archive->isOpen();
+    };
+
+    bool ok = false;
     const QString fileUrl = url(compressTypeSelected);
 
     assert(compressTypeSelected >= 0 && compressTypeSelected <= 8);
+
+    KArchive *archive = nullptr;
+
+    switch (compressTypeSelected)
+    {
+    case 0: //.ZIP
+    {
+        archive = new KZip(fileUrl);
+        break;
+    }
+    case 1: // .TAR
+    {
+        archive = new KTar(fileUrl);
+        break;
+    }
+    case 2: //.7ZIP
+    {
+#ifdef K7ZIP_H
+
+               // TODO: KArchive no permite comprimir ficheros del mismo modo que con TAR o ZIP. Hay que hacerlo de otra forma y requiere disponer de una libreria actualizada de KArchive.
+        archive = new K7Zip(fileUrl);
+#endif
+        break;
+    }
+    case 3: //.AR
+    {
+        // TODO: KArchive no permite comprimir ficheros del mismo modo que con TAR o ZIP. Hay que hacerlo de otra forma y requiere disponer de una libreria actualizada de KArchive.
+        archive = new KAr(fileUrl);
+        break;
+    }
+    default:
+        qDebug() << "ERROR. COMPRESSED TYPE SELECTED NOT COMPATIBLE";
+        break;
+    }
+
+    if(!openCheck(archive))
+    {
+        ok = false;
+        Q_EMIT compressionFinished(QUrl::fromLocalFile(fileUrl).toString(), ok);
+        return ok;
+    }
 
     for (const auto &uri : files)
     {
@@ -380,135 +455,27 @@ bool Compressor::compress(const QStringList &files, const QUrl &where, const QSt
             if (!file.isOpen())
             {
                 qDebug() << "ERROR. CURRENT USER DOES NOT HAVE PEMRISSION FOR WRITE IN THE CURRENT DIRECTORY.";
-                error = true;
+                ok = false;
                 continue;
             }
 
-            switch (compressTypeSelected)
-            {
-            case 0: //.ZIP
-            {
-                auto kzip = new KZip(fileUrl);
-                openCheck(kzip);
-
-                error = fileWriter(kzip, file);
-
-                (void)kzip->close();
-                // WriteFile returns if the file was written or not,
-                // but this function returns if some error occurs so for this reason it is needed to toggle the value
-                error = !error;
-                break;
-            }
-            case 1: // .TAR
-            {
-                auto ktar = new KTar(fileUrl);
-                openCheck(ktar);
-
-                error = fileWriter(ktar, file);
-
-                (void)ktar->close();
-                break;
-            }
-            case 2: //.7ZIP
-            {
-#ifdef K7ZIP_H
-
-                       // TODO: KArchive no permite comprimir ficheros del mismo modo que con TAR o ZIP. Hay que hacerlo de otra forma y requiere disponer de una libreria actualizada de KArchive.
-                auto k7zip = new K7Zip(fileUrl);
-                openCheck(k7zip);
-
-                error = fileWriter(k7zip, file);
-
-                k7zip->close();
-                // WriteFile returns if the file was written or not,
-                // but this function returns if some error occurs so for this reason it is needed to toggle the value
-                error = !error;
-#endif
-                break;
-            }
-            case 3: //.AR
-            {
-                // TODO: KArchive no permite comprimir ficheros del mismo modo que con TAR o ZIP. Hay que hacerlo de otra forma y requiere disponer de una libreria actualizada de KArchive.
-                auto kar = new KAr(fileUrl);
-                openCheck(kar);
-
-                error = fileWriter(kar, file);
-
-                (void)kar->close();
-                // WriteFile returns if the file was written or not,
-                // but this function returns if some error occurs so for this reason it is needed to toggle the value
-                error = !error;
-                break;
-            }
-            default:
-                qDebug() << "ERROR. COMPRESSED TYPE SELECTED NOT COMPATIBLE";
-                break;
-            }
-
+            ok = fileWriter(archive, file);
 
         } else
-        {
+        {                        
             qDebug() << "Dir: " << QUrl(uri).toLocalFile();
             auto dir = QDirIterator(QUrl(uri).toLocalFile(), QDirIterator::Subdirectories);
-
-            switch (compressTypeSelected)
-            {
-            case 0: //.ZIP
-            {
-                auto kzip = new KZip(fileUrl);
-                openCheck(kzip);
-
-                dirWriter(kzip, dir, error);
-
-                (void)kzip->close();
-                break;
-            }
-            case 1: // .TAR
-            {
-                auto ktar = new KTar(fileUrl);
-                openCheck(ktar);
-
-                dirWriter(ktar, dir, error);
-
-                (void)ktar->close();
-                break;
-            }
-            case 2: //.7ZIP
-            {
-#ifdef K7ZIP_H
-
-                auto k7zip = new K7Zip(fileUrl);
-                openCheck(k7zip);
-
-                dirWriter(k7zip, dir, error);
-
-                (void)k7zip->close();
-#endif
-                break;
-            }
-            case 3: //.AR
-            {
-                auto kAr = new KAr(fileUrl);
-                openCheck(kAr);
-
-                dirWriter(kAr, dir, error);
-
-                (void)kAr->close();
-                break;
-            }
-            default:
-                qDebug() << "ERROR. COMPRESSED TYPE SELECTED NOT COMPATIBLE";
-                break;
-            }
+            ok = dirWriter(archive, dir);
         }
     }
 
-           // kzip->prepareWriting("Hello00000.txt", "gabridc", "gabridc", 1024, 0100777, QDateTime(), QDateTime(), QDateTime());
-           // kzip->writeData("Hello", sizeof("Hello"));
-           // kzip->finishingWriting();
+    (void)archive->close();
+                            // kzip->prepareWriting("Hello00000.txt", "gabridc", "gabridc", 1024, 0100777, QDateTime(), QDateTime(), QDateTime());
+                            // kzip->writeData("Hello", sizeof("Hello"));
+                            // kzip->finishingWriting();
 
-    Q_EMIT compressionFinished(QUrl::fromLocalFile(fileUrl).toString(), !error);
-    return error;
+    Q_EMIT compressionFinished(QUrl::fromLocalFile(fileUrl).toString(), ok);
+    return ok;
 }
 
 KArchive *CompressedFile::getKArchiveObject(const QUrl &url)
@@ -552,7 +519,7 @@ void CompressedFile::setUrl(const QUrl &url)
 
     if(!FMStatic::fileExists(m_url))
     {
-        qWarning()<< "File does not exists and can not be opened.";
+        qWarning()<< "File does not exists and can not be opened." << url;
         return;
     }
 

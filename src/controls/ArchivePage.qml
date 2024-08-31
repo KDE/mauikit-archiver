@@ -10,7 +10,6 @@ import org.mauikit.archiver as Arc
 
 Maui.Page
 {
-
     id: control
     title: _manager.fileName
 
@@ -22,7 +21,7 @@ Maui.Page
     {
         id: _manager
 
-        onCompressionFinished:
+        onCompressionFinished: (url, ok) =>
         {
             if(ok)
             {
@@ -33,7 +32,7 @@ Maui.Page
             }
         }
 
-        onExtractionFinished:
+        onExtractionFinished: (url, ok) =>
         {
             if(ok)
             {
