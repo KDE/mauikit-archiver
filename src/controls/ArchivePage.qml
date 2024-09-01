@@ -14,8 +14,10 @@ Maui.Page
     title: _manager.fileName
 
     property alias url : _manager.url
+    readonly property alias manager : _manager
 
     showTitle: false
+    signal itemClicked(int index, var item)
 
     Arc.CompressedFile
     {
@@ -176,7 +178,8 @@ Maui.Page
                 if(Maui.Handy.singleClick)
                 {
                     _browser.currentIndex = index
-                    openItem(_browser.model.get(index))
+
+                    itemClicked(index, _browser.model.get(index))
                 }
 
             }
@@ -186,7 +189,7 @@ Maui.Page
                 if(!Maui.Handy.singleClick)
                 {
                     _browser.currentIndex = index
-                    openItem(_browser.model.get(index))
+                   control.itemClicked(index,  _browser.model.get(index))
                 }
             }
 
@@ -268,7 +271,6 @@ Maui.Page
                 console.log("DROP URLS", urls )
                 _manager.addFiles(urls, _manager.currentPath);
             }
-
         }
     }
 
@@ -277,11 +279,6 @@ Maui.Page
         if(item.isdir === "true")
         {
             _manager.openDir(item.path)
-
-        }else
-        {
-            var url = _manager.temporaryFile(item.path)
-            previewFile(url)
         }
     }
 
