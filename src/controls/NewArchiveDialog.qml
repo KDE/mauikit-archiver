@@ -7,7 +7,7 @@ import org.mauikit.filebrowsing as FM
 
 import org.mauikit.archiver as Arc
 
-Maui.FileListingDialog
+FM.FileListingDialog
 {
     id: control
 
