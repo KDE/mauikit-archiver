@@ -20,6 +20,10 @@ void ArchiverPlugin::registerTypes(const char *uri)
     qmlRegisterType<Compressor>(uri, 1, 0, "Compressor");
     qmlRegisterType<CompressedFile>(uri, 1, 0, "CompressedFile");
     qmlRegisterSingletonType<StaticArchive>(uri, 1, 0, "StaticArchive", &StaticArchive::qmlInstance);
+
+    qmlRegisterType(componentUrl(QStringLiteral("ArchivePage.qml")), uri, 1, 0, "ArchivePage");
+    qmlRegisterType(componentUrl(QStringLiteral("ExtractDialog.qml")), uri, 1, 0, "ExtractDialog");
+    qmlRegisterType(componentUrl(QStringLiteral("NewArchiveDialog.qml")), uri, 1, 0, "NewArchiveDialog");
 }
 
 void ArchiverPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
