@@ -67,6 +67,14 @@ FM.FileListingDialog
         }
     ]
 
+    Action
+    {
+        property url url
+        id: _compressSuccessAction
+        text: i18n("Open")
+        onTriggered: FM.FM.openUrl(url)
+    }
+
     Arc.Compressor
     {
         id: _compressor
@@ -81,16 +89,11 @@ FM.FileListingDialog
                                        return
                                    }
 
-                                   var cb = ()=>
-                                   {
-                                       FM.FM.openUrl(url)
-                                   }
-
+                                    _compressSuccessAction.url = url
                                    Maui.App.rootComponent.notify("application-x-archive",
                                                                  ok ? i18n("File compressed successfully") : i18n("Failed to compress"),
                                                                  url,
-                                                                 cb,
-                                                                 i18n("Open"))
+                                                                 [_compressSuccessAction])
                                }
     }
 
