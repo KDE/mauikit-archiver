@@ -41,6 +41,7 @@ FM.FileListingDialog
         Action
         {
             text: i18n("Cancel")
+            Maui.Controls.status: Maui.Controls.Negative
             onTriggered:
             {
                 control.clear()
@@ -50,6 +51,7 @@ FM.FileListingDialog
         Action
         {
             text: i18n("Create")
+            Maui.Controls.status: Maui.Controls.Positive
             onTriggered:
             {
                 const ok = control.checkExistance(_archiveNameField.text, _locationField.text, control.extensionName(control.type))
@@ -97,11 +99,11 @@ FM.FileListingDialog
                                }
     }
 
-    TextField
+    Maui.TextField
     {
         id: _archiveNameField
         Layout.fillWidth: true
-        placeholderText: i18n("Archive name...")
+        Maui.Controls.title: i18n("Archive name")
 
         onTextChanged:
         {
@@ -109,11 +111,12 @@ FM.FileListingDialog
         }
     }
 
-    TextField
+    Maui.TextField
     {
         id: _locationField
         Layout.fillWidth: true
-        placeholderText: i18n("Location")
+        Maui.Controls.title: i18n("Destination")
+        Maui.Controls.subtitle: i18n("The final location of the new archive")
         text: control.destination
 
         onTextChanged:
