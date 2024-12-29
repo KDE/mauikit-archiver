@@ -1,211 +1,207 @@
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the mauikit-archiver package.
 #
-# SPDX-FileCopyrightText: 2024 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-archiver\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-26 00:40+0000\n"
-"PO-Revision-Date: 2024-12-27 09:16+0100\n"
-"Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
-"Language-Team: French <French <kde-francophone@kde.org>>\n"
-"Language: fr\n"
+"PO-Revision-Date: 2024-12-29 02:11+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 24.12.0\n"
 
 #: src/controls/ArchivePage.qml:30
 #, kde-format
 msgid "Archive Ready"
-msgstr "Archive prête"
+msgstr "封存已就緒"
 
 #: src/controls/ArchivePage.qml:30
 #, kde-format
 msgid "The new file is now ready."
-msgstr "Le nouveau fichier est maintenant prêt."
+msgstr "新檔案已準備完成。"
 
 #: src/controls/ArchivePage.qml:33 src/controls/ArchivePage.qml:44
 #, kde-format
 msgid "Failed"
-msgstr "Échoué"
+msgstr "失敗"
 
 #: src/controls/ArchivePage.qml:33
 #, kde-format
 msgid "The archive could not be created."
-msgstr "L'archive n'a pas pu être créée."
+msgstr "封存檔無法建立。"
 
 #: src/controls/ArchivePage.qml:41
 #, kde-format
 msgid "Extraction Ready"
-msgstr "Extraction prête"
+msgstr "解開已就緒"
 
 #: src/controls/ArchivePage.qml:41
 #, kde-format
 msgid "The archive contents have been extracted."
-msgstr "Le contenu de l'archive a été extrait."
+msgstr "封存檔內容已取出。"
 
 #: src/controls/ArchivePage.qml:44
 #, kde-format
 msgid "The extraction has failed."
-msgstr "L'extraction a échoué."
+msgstr "解開失敗了。"
 
 #: src/controls/ArchivePage.qml:56
 #, kde-format
 msgid "Search"
 msgid_plural "Search %1 files"
-msgstr[0] "Rechercher"
-msgstr[1] "Rechercher %1 fichiers"
+msgstr[0] "搜尋 %1 個檔案"
 
 #: src/controls/ArchivePage.qml:80 src/controls/ExtractDialog.qml:21
 #, kde-format
 msgid "Extract"
-msgstr "Extraire"
+msgstr "解開"
 
 #: src/controls/ArchivePage.qml:85
 #, kde-format
 msgid "Extract to..."
-msgstr "Extraire vers..."
+msgstr "解開到…"
 
 #: src/controls/ArchivePage.qml:120
 #, kde-format
 msgid "Name"
-msgstr "Nom"
+msgstr "名稱"
 
 #: src/controls/ArchivePage.qml:129
 #, kde-format
 msgid "Date"
-msgstr "Date"
+msgstr "日期"
 
 #: src/controls/ArchivePage.qml:138
 #, kde-format
 msgid "Size"
-msgstr "Taille"
+msgstr "大小"
 
 #: src/controls/ArchivePage.qml:163
 #, kde-format
 msgid "Compress"
-msgstr "Compresser"
+msgstr "壓縮"
 
 #: src/controls/ArchivePage.qml:164
 #, kde-format
 msgid "Drop files in here to compress them."
-msgstr "Déposez les fichiers ici pour les compresser."
+msgstr "拖曳檔案至此來壓縮它們。"
 
 #: src/controls/ArchivePage.qml:213
 #, kde-format
 msgid "Preview"
-msgstr "Afficher un aperçu"
+msgstr "預覽"
 
 #: src/controls/ArchivePage.qml:220 src/controls/NewArchiveDialog.qml:76
 #, kde-format
 msgid "Open"
-msgstr "Ouvrir"
+msgstr "開啟"
 
 #: src/controls/ArchivePage.qml:226
 #, kde-format
 msgid "Open with"
-msgstr "Ouvrir avec"
+msgstr "開啟方式"
 
 #: src/controls/ArchivePage.qml:233
 #, kde-format
 msgid "Delete"
-msgstr "Supprimer"
+msgstr "刪除"
 
 #: src/controls/ArchivePage.qml:255
 #, kde-format
 msgid "Add here"
-msgstr "Ajouter ici"
+msgstr "加入於此"
 
 #: src/controls/ArchivePage.qml:256
 #, kde-format
 msgid "Drop files in here to add them to the archive."
-msgstr "Déposez les fichiers ici pour les ajouter à l'archive."
+msgstr "拖曳檔案至此來將它們加入封存檔。"
 
 #: src/controls/ExtractDialog.qml:22
 #, kde-format
 msgid "Extract the contents of the compressed file"
-msgstr "Extraire le contenu du fichier compressé"
+msgstr "解開壓縮檔的內容"
 
 #: src/controls/ExtractDialog.qml:81
 #, kde-format
 msgid "A directory with the same name already exists!"
-msgstr "Un dossier avec le même nom existe déjà !"
+msgstr "名稱相同的目錄已經存在了！"
 
 #: src/controls/ExtractDialog.qml:84
 #, kde-format
 msgid "The name looks good"
-msgstr "Le nom semble bon"
+msgstr "名稱沒問題。"
 
 #: src/controls/NewArchiveDialog.qml:38
 #, kde-format
 msgid "Compress %1 file into a new archive"
 msgid_plural "Compress %1 files into a new archive"
-msgstr[0] "Compresser le fichier %1 dans une nouvelle archive"
-msgstr[1] "Compresser %1 fichiers dans une nouvelle archive"
+msgstr[0] "將 %1 個檔案壓縮至新的封存檔裡"
 
 #: src/controls/NewArchiveDialog.qml:43
 #, kde-format
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "取消"
 
 #: src/controls/NewArchiveDialog.qml:53
 #, kde-format
 msgid "Create"
-msgstr "Créer"
+msgstr "建立"
 
 #: src/controls/NewArchiveDialog.qml:61
 #, kde-format
 msgid ""
 "Some error occured. Maybe current user does not have permission for writing "
 "in this directory."
-msgstr ""
-"Une erreur s'est produite. Peut-être que l'utilisateur courant n'a pas la "
-"permission d'écrire dans ce dossier."
+msgstr "發生錯誤。或許是因為目前使用者沒有權限寫入此目錄。"
 
 #: src/controls/NewArchiveDialog.qml:96
 #, kde-format
 msgid "File compressed successfully"
-msgstr "Fichier compressé avec succès"
+msgstr "檔案已成功壓縮"
 
 #: src/controls/NewArchiveDialog.qml:96
 #, kde-format
 msgid "Failed to compress"
-msgstr "Échec de la compression"
+msgstr "壓縮失敗"
 
 #: src/controls/NewArchiveDialog.qml:106
 #, kde-format
 msgid "Archive name"
-msgstr "Nom de l'archive"
+msgstr "封存名稱"
 
 #: src/controls/NewArchiveDialog.qml:118
 #, kde-format
 msgid "Destination"
-msgstr "Destination"
+msgstr "目的地"
 
 #: src/controls/NewArchiveDialog.qml:119
 #, kde-format
 msgid "The final location of the new archive"
-msgstr "L'emplacement final de la nouvelle archive"
+msgstr "新封存檔的最終位置"
 
 #: src/controls/NewArchiveDialog.qml:164
 #, kde-format
 msgid "Base location does not exists. Try with a different location."
-msgstr ""
-"L'emplacement de base n'existe pas. Veuillez essayer avec un autre "
-"emplacement."
+msgstr "基礎位置不存在。請嘗試另一個位置。"
 
 #: src/controls/NewArchiveDialog.qml:170
 #, kde-format
 msgid "File name can not be empty."
-msgstr "Le nom du fichier ne peut pas être vide."
+msgstr "檔案名稱不能是空的。"
 
 #: src/controls/NewArchiveDialog.qml:179
 #, kde-format
 msgid "File already exists. Try with another name."
-msgstr "Le fichier existe déjà. Veuillez essayer avec un autre nom."
+msgstr "檔案已存在。請嘗試另一個名稱。"
 
 #: src/controls/NewArchiveDialog.qml:183
 #, kde-format
 msgid "Looks good"
-msgstr "Semble bon"
+msgstr "沒問題"
