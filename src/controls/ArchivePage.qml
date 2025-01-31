@@ -285,8 +285,8 @@ Maui.Page
     function insertFiles()
     {
         _dialogLoader.sourceComponent = _fileDialogComponent
-        dialog.mode = dialog.modes.OPEN
-        dialog.settings.filterType= FM.FMList.NONE
+        dialog.mode = FM.FileDialog.Open
+        dialog.browser.settings.filterType = FM.FMList.NONE
         dialog.callback = (paths) => {
 
             _manager.addFiles(paths, _manager.currentPath);
