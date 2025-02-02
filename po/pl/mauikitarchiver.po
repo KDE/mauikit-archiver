@@ -1,0 +1,214 @@
+# Copyright (C) 2025 This file is copyright:
+# This file is distributed under the same license as the mauikit-archiver package.
+# SPDX-FileCopyrightText: 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mauikit-archiver\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-12-26 00:40+0000\n"
+"PO-Revision-Date: 2025-02-01 12:36+0100\n"
+"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
+"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 24.12.1\n"
+
+#: src/controls/ArchivePage.qml:30
+#, kde-format
+msgid "Archive Ready"
+msgstr "Archiwum jest gotowe"
+
+#: src/controls/ArchivePage.qml:30
+#, kde-format
+msgid "The new file is now ready."
+msgstr "Nowy plik jest teraz gotowy."
+
+#: src/controls/ArchivePage.qml:33 src/controls/ArchivePage.qml:44
+#, kde-format
+msgid "Failed"
+msgstr "Niepowodzenie"
+
+#: src/controls/ArchivePage.qml:33
+#, kde-format
+msgid "The archive could not be created."
+msgstr "Nie udało się utworzyć archiwum."
+
+#: src/controls/ArchivePage.qml:41
+#, kde-format
+msgid "Extraction Ready"
+msgstr "Ukończono wypakowywanie"
+
+#: src/controls/ArchivePage.qml:41
+#, kde-format
+msgid "The archive contents have been extracted."
+msgstr "Wypakowano zawartość archiwum."
+
+#: src/controls/ArchivePage.qml:44
+#, kde-format
+msgid "The extraction has failed."
+msgstr "Nie udało się wypakować."
+
+#: src/controls/ArchivePage.qml:56
+#, kde-format
+msgid "Search"
+msgid_plural "Search %1 files"
+msgstr[0] "Poszukaj"
+msgstr[1] "Poszukaj %1 plików"
+msgstr[2] "Poszukaj %1 plików"
+
+#: src/controls/ArchivePage.qml:80 src/controls/ExtractDialog.qml:21
+#, kde-format
+msgid "Extract"
+msgstr "Wypakuj"
+
+#: src/controls/ArchivePage.qml:85
+#, kde-format
+msgid "Extract to..."
+msgstr "Wypakuj do…"
+
+#: src/controls/ArchivePage.qml:120
+#, kde-format
+msgid "Name"
+msgstr "Nazwa"
+
+#: src/controls/ArchivePage.qml:129
+#, kde-format
+msgid "Date"
+msgstr "Data"
+
+#: src/controls/ArchivePage.qml:138
+#, kde-format
+msgid "Size"
+msgstr "Rozmiar"
+
+#: src/controls/ArchivePage.qml:163
+#, kde-format
+msgid "Compress"
+msgstr "Spakuj"
+
+#: src/controls/ArchivePage.qml:164
+#, kde-format
+msgid "Drop files in here to compress them."
+msgstr "Upuść pliki tutaj, aby je spakować."
+
+#: src/controls/ArchivePage.qml:213
+#, kde-format
+msgid "Preview"
+msgstr "Podgląd"
+
+#: src/controls/ArchivePage.qml:220 src/controls/NewArchiveDialog.qml:76
+#, kde-format
+msgid "Open"
+msgstr "Otwórz"
+
+#: src/controls/ArchivePage.qml:226
+#, kde-format
+msgid "Open with"
+msgstr "Otwórz w"
+
+#: src/controls/ArchivePage.qml:233
+#, kde-format
+msgid "Delete"
+msgstr "Usuń"
+
+#: src/controls/ArchivePage.qml:255
+#, kde-format
+msgid "Add here"
+msgstr "Dodaj tutaj"
+
+#: src/controls/ArchivePage.qml:256
+#, kde-format
+msgid "Drop files in here to add them to the archive."
+msgstr "Upuść pliki tutaj, aby dodać je do archiwum."
+
+#: src/controls/ExtractDialog.qml:22
+#, kde-format
+msgid "Extract the contents of the compressed file"
+msgstr "Wypakuj zawartość pliku archiwum"
+
+#: src/controls/ExtractDialog.qml:81
+#, kde-format
+msgid "A directory with the same name already exists!"
+msgstr "Katalog o tej samej nazwie już istnieje!"
+
+#: src/controls/ExtractDialog.qml:84
+#, kde-format
+msgid "The name looks good"
+msgstr "Nazwa wygląda dobrze"
+
+#: src/controls/NewArchiveDialog.qml:38
+#, kde-format
+msgid "Compress %1 file into a new archive"
+msgid_plural "Compress %1 files into a new archive"
+msgstr[0] "Spakuj %1 plik do nowego archiwum"
+msgstr[1] "Spakuj %1 pliki do nowego archiwum"
+msgstr[2] "Spakuj %1 plików do nowego archiwum"
+
+#: src/controls/NewArchiveDialog.qml:43
+#, kde-format
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: src/controls/NewArchiveDialog.qml:53
+#, kde-format
+msgid "Create"
+msgstr "Utwórz"
+
+#: src/controls/NewArchiveDialog.qml:61
+#, kde-format
+msgid ""
+"Some error occured. Maybe current user does not have permission for writing "
+"in this directory."
+msgstr ""
+"Napotkano błąd. Może bieżący użytkownik nie ma uprawnień do zapisywania do "
+"tego katalogu."
+
+#: src/controls/NewArchiveDialog.qml:96
+#, kde-format
+msgid "File compressed successfully"
+msgstr "Pomyślnie spakowano plik"
+
+#: src/controls/NewArchiveDialog.qml:96
+#, kde-format
+msgid "Failed to compress"
+msgstr "Nie udało się spakować"
+
+#: src/controls/NewArchiveDialog.qml:106
+#, kde-format
+msgid "Archive name"
+msgstr "Nazwa archiwum"
+
+#: src/controls/NewArchiveDialog.qml:118
+#, kde-format
+msgid "Destination"
+msgstr "Cel"
+
+#: src/controls/NewArchiveDialog.qml:119
+#, kde-format
+msgid "The final location of the new archive"
+msgstr "Miejsce docelowe nowego archiwum"
+
+#: src/controls/NewArchiveDialog.qml:164
+#, kde-format
+msgid "Base location does not exists. Try with a different location."
+msgstr "Miejsce odniesienia nie istnieje. Spróbuj innego miejsca."
+
+#: src/controls/NewArchiveDialog.qml:170
+#, kde-format
+msgid "File name can not be empty."
+msgstr "Nazwa pliku nie może być pusta."
+
+#: src/controls/NewArchiveDialog.qml:179
+#, kde-format
+msgid "File already exists. Try with another name."
+msgstr "Plik już istnieje. Spróbuj innej nazwy."
+
+#: src/controls/NewArchiveDialog.qml:183
+#, kde-format
+msgid "Looks good"
+msgstr "Wygląda to dobrze"
