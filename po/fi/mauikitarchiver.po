@@ -1,0 +1,211 @@
+# Copyright (C) 2025 This file is copyright:
+# This file is distributed under the same license as the mauikit-archiver package.
+# SPDX-FileCopyrightText: 2025 Tommi Nieminen <translator@legisign.org>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mauikit-archiver\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-12-26 00:40+0000\n"
+"PO-Revision-Date: 2025-01-31 22:21+0200\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.08.5\n"
+
+#: src/controls/ArchivePage.qml:30
+#, kde-format
+msgid "Archive Ready"
+msgstr "Arkisto valmis"
+
+#: src/controls/ArchivePage.qml:30
+#, kde-format
+msgid "The new file is now ready."
+msgstr "Uusi tiedosto on nyt valmis."
+
+#: src/controls/ArchivePage.qml:33 src/controls/ArchivePage.qml:44
+#, kde-format
+msgid "Failed"
+msgstr "Epäonnistui"
+
+#: src/controls/ArchivePage.qml:33
+#, kde-format
+msgid "The archive could not be created."
+msgstr "Arkistoa ei voitu luoda."
+
+#: src/controls/ArchivePage.qml:41
+#, kde-format
+msgid "Extraction Ready"
+msgstr "Purkaminen valmis"
+
+#: src/controls/ArchivePage.qml:41
+#, kde-format
+msgid "The archive contents have been extracted."
+msgstr "Arkiston sisältö on purettu."
+
+#: src/controls/ArchivePage.qml:44
+#, kde-format
+msgid "The extraction has failed."
+msgstr "Purkaminen epäonnistui."
+
+#: src/controls/ArchivePage.qml:56
+#, kde-format
+msgid "Search"
+msgid_plural "Search %1 files"
+msgstr[0] "Etsi"
+msgstr[1] "Etsi %1 tiedostoa"
+
+#: src/controls/ArchivePage.qml:80 src/controls/ExtractDialog.qml:21
+#, kde-format
+msgid "Extract"
+msgstr "Pura"
+
+#: src/controls/ArchivePage.qml:85
+#, kde-format
+msgid "Extract to..."
+msgstr "Pura kohteeseen…"
+
+#: src/controls/ArchivePage.qml:120
+#, kde-format
+msgid "Name"
+msgstr "Nimi"
+
+#: src/controls/ArchivePage.qml:129
+#, kde-format
+msgid "Date"
+msgstr "Päiväys"
+
+#: src/controls/ArchivePage.qml:138
+#, kde-format
+msgid "Size"
+msgstr "Koko"
+
+#: src/controls/ArchivePage.qml:163
+#, kde-format
+msgid "Compress"
+msgstr "Pakkaa"
+
+#: src/controls/ArchivePage.qml:164
+#, kde-format
+msgid "Drop files in here to compress them."
+msgstr "Pakkaa tiedostoja pudottamalla ne tähän."
+
+#: src/controls/ArchivePage.qml:213
+#, kde-format
+msgid "Preview"
+msgstr "Esikatselu"
+
+#: src/controls/ArchivePage.qml:220 src/controls/NewArchiveDialog.qml:76
+#, kde-format
+msgid "Open"
+msgstr "Avaa"
+
+#: src/controls/ArchivePage.qml:226
+#, kde-format
+msgid "Open with"
+msgstr "Avaa ohjelmalla"
+
+#: src/controls/ArchivePage.qml:233
+#, kde-format
+msgid "Delete"
+msgstr "Poista"
+
+#: src/controls/ArchivePage.qml:255
+#, kde-format
+msgid "Add here"
+msgstr "Lisää tähän"
+
+#: src/controls/ArchivePage.qml:256
+#, kde-format
+msgid "Drop files in here to add them to the archive."
+msgstr "Lisää tiedostoja arkistoon pudottamalla ne tähän."
+
+#: src/controls/ExtractDialog.qml:22
+#, kde-format
+msgid "Extract the contents of the compressed file"
+msgstr "Pura pakatun tiedoston sisältö"
+
+#: src/controls/ExtractDialog.qml:81
+#, kde-format
+msgid "A directory with the same name already exists!"
+msgstr "Saman niminen kansio on jo olemassa!"
+
+#: src/controls/ExtractDialog.qml:84
+#, kde-format
+msgid "The name looks good"
+msgstr "Nimi vaikuttaa hyvältä"
+
+#: src/controls/NewArchiveDialog.qml:38
+#, kde-format
+msgid "Compress %1 file into a new archive"
+msgid_plural "Compress %1 files into a new archive"
+msgstr[0] "Pakkaa uuteen arkistoon %1 tiedosto"
+msgstr[1] "Pakkaa uuteen arkistoon %1 tiedostoa"
+
+#: src/controls/NewArchiveDialog.qml:43
+#, kde-format
+msgid "Cancel"
+msgstr "Peru"
+
+#: src/controls/NewArchiveDialog.qml:53
+#, kde-format
+msgid "Create"
+msgstr "Luo"
+
+#: src/controls/NewArchiveDialog.qml:61
+#, kde-format
+msgid ""
+"Some error occured. Maybe current user does not have permission for writing "
+"in this directory."
+msgstr ""
+"Tapahtui jokin virhe. Nykyisellä käyttäjällä ei ehkä ole oikeutta kirjoittaa "
+"tähän kansioon."
+
+#: src/controls/NewArchiveDialog.qml:96
+#, kde-format
+msgid "File compressed successfully"
+msgstr "Tiedoston pakkaaminen onnistui"
+
+#: src/controls/NewArchiveDialog.qml:96
+#, kde-format
+msgid "Failed to compress"
+msgstr "Pakkaaminen epäonnistui"
+
+#: src/controls/NewArchiveDialog.qml:106
+#, kde-format
+msgid "Archive name"
+msgstr "Arkiston nimi"
+
+#: src/controls/NewArchiveDialog.qml:118
+#, kde-format
+msgid "Destination"
+msgstr "Kohde"
+
+#: src/controls/NewArchiveDialog.qml:119
+#, kde-format
+msgid "The final location of the new archive"
+msgstr "Arkiston lopullinen sijainti"
+
+#: src/controls/NewArchiveDialog.qml:164
+#, kde-format
+msgid "Base location does not exists. Try with a different location."
+msgstr "Pohjasijaintia ei ole olemassa. Kokeile toista kohdetta."
+
+#: src/controls/NewArchiveDialog.qml:170
+#, kde-format
+msgid "File name can not be empty."
+msgstr "Tiedostonimi ei voi olla tyhjä."
+
+#: src/controls/NewArchiveDialog.qml:179
+#, kde-format
+msgid "File already exists. Try with another name."
+msgstr "Tiedosto on jo olemassa. Kokeile toista nimeä."
+
+#: src/controls/NewArchiveDialog.qml:183
+#, kde-format
+msgid "Looks good"
+msgstr "Hyvältä näyttää"
