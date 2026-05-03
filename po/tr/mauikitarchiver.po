@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the mauikit-archiver package.
 #
-# SPDX-FileCopyrightText: 2024 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2024, 2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-archiver\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2024-12-26 14:21+0300\n"
+"PO-Revision-Date: 2026-05-02 18:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: src/controls/ArchivePage.qml:30
 #, kde-format
@@ -132,7 +132,7 @@ msgstr "Sıkıştırılmış dosyanın içeriğini çıkar"
 #: src/controls/ExtractDialog.qml:81
 #, kde-format
 msgid "A directory with the same name already exists!"
-msgstr "Aynı adlı bir dizin halihazırda var!"
+msgstr "Aynı adlı bir dizin hâlihazırda var!"
 
 #: src/controls/ExtractDialog.qml:84
 #, kde-format
@@ -203,7 +203,7 @@ msgstr "Dosya adı boş olamaz."
 #: src/controls/NewArchiveDialog.qml:179
 #, kde-format
 msgid "File already exists. Try with another name."
-msgstr "Dosya halihazırda var. Başka bir ad deneyin."
+msgstr "Dosya hâlihazırda var. Başka bir ad deneyin."
 
 #: src/controls/NewArchiveDialog.qml:183
 #, kde-format
