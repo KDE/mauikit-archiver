@@ -1,0 +1,208 @@
+# Uyghur translation for mauikitarchiver.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the mauikit-archiver package.
+# Abduqadir Abliz <sahranbay@gmail.com>, 2026., YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mauikit-archiver\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2025-11-17 11:51+0000\n"
+"PO-Revision-Date: 2026-05-31 20:27-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
+"Language: ug\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
+
+#: src/controls/ArchivePage.qml:30
+#, kde-format
+msgid "Archive Ready"
+msgstr ""
+
+#: src/controls/ArchivePage.qml:30
+#, kde-format
+msgid "The new file is now ready."
+msgstr ""
+
+#: src/controls/ArchivePage.qml:33 src/controls/ArchivePage.qml:44
+#, kde-format
+msgid "Failed"
+msgstr "مەغلۇپ بولدى"
+
+#: src/controls/ArchivePage.qml:33
+#, kde-format
+msgid "The archive could not be created."
+msgstr ""
+
+#: src/controls/ArchivePage.qml:41
+#, kde-format
+msgid "Extraction Ready"
+msgstr ""
+
+#: src/controls/ArchivePage.qml:41
+#, kde-format
+msgid "The archive contents have been extracted."
+msgstr ""
+
+#: src/controls/ArchivePage.qml:44
+#, kde-format
+msgid "The extraction has failed."
+msgstr ""
+
+#: src/controls/ArchivePage.qml:56
+#, kde-format
+msgid "Search"
+msgid_plural "Search %1 files"
+msgstr[0] "%1 ھۆججەت ئىزدە"
+
+#: src/controls/ArchivePage.qml:80 src/controls/ExtractDialog.qml:21
+#, kde-format
+msgid "Extract"
+msgstr "ئايرىش"
+
+#: src/controls/ArchivePage.qml:85
+#, kde-format
+msgid "Extract to..."
+msgstr ""
+
+#: src/controls/ArchivePage.qml:120
+#, kde-format
+msgid "Name"
+msgstr "ئاتى"
+
+#: src/controls/ArchivePage.qml:129
+#, kde-format
+msgid "Date"
+msgstr "چېسلا"
+
+#: src/controls/ArchivePage.qml:138
+#, kde-format
+msgid "Size"
+msgstr "چوڭلۇقى"
+
+#: src/controls/ArchivePage.qml:163
+#, kde-format
+msgid "Compress"
+msgstr "قىس"
+
+#: src/controls/ArchivePage.qml:164
+#, kde-format
+msgid "Drop files in here to compress them."
+msgstr ""
+
+#: src/controls/ArchivePage.qml:213
+#, kde-format
+msgid "Preview"
+msgstr "ئالدىن كۆزەت"
+
+#: src/controls/ArchivePage.qml:220 src/controls/NewArchiveDialog.qml:76
+#, kde-format
+msgid "Open"
+msgstr "ئاچ"
+
+#: src/controls/ArchivePage.qml:226
+#, kde-format
+msgid "Open with"
+msgstr ""
+
+#: src/controls/ArchivePage.qml:233
+#, kde-format
+msgid "Delete"
+msgstr "ئۆچۈر"
+
+#: src/controls/ArchivePage.qml:255
+#, kde-format
+msgid "Add here"
+msgstr ""
+
+#: src/controls/ArchivePage.qml:256
+#, kde-format
+msgid "Drop files in here to add them to the archive."
+msgstr ""
+
+#: src/controls/ExtractDialog.qml:22
+#, kde-format
+msgid "Extract the contents of the compressed file"
+msgstr ""
+
+#: src/controls/ExtractDialog.qml:81
+#, kde-format
+msgid "A directory with the same name already exists!"
+msgstr ""
+
+#: src/controls/ExtractDialog.qml:84
+#, kde-format
+msgid "The name looks good"
+msgstr ""
+
+#: src/controls/NewArchiveDialog.qml:38
+#, kde-format
+msgid "Compress %1 file into a new archive"
+msgid_plural "Compress %1 files into a new archive"
+msgstr[0] ""
+
+#: src/controls/NewArchiveDialog.qml:43
+#, kde-format
+msgid "Cancel"
+msgstr "ۋاز كەچ"
+
+#: src/controls/NewArchiveDialog.qml:53
+#, kde-format
+msgid "Create"
+msgstr "ياسا"
+
+#: src/controls/NewArchiveDialog.qml:61
+#, kde-format
+msgid ""
+"Some error occured. Maybe current user does not have permission for writing "
+"in this directory."
+msgstr ""
+
+#: src/controls/NewArchiveDialog.qml:96
+#, kde-format
+msgid "File compressed successfully"
+msgstr ""
+
+#: src/controls/NewArchiveDialog.qml:96
+#, kde-format
+msgid "Failed to compress"
+msgstr ""
+
+#: src/controls/NewArchiveDialog.qml:106
+#, kde-format
+msgid "Archive name"
+msgstr ""
+
+#: src/controls/NewArchiveDialog.qml:118
+#, kde-format
+msgid "Destination"
+msgstr "نىشان"
+
+#: src/controls/NewArchiveDialog.qml:119
+#, kde-format
+msgid "The final location of the new archive"
+msgstr ""
+
+#: src/controls/NewArchiveDialog.qml:164
+#, kde-format
+msgid "Base location does not exists. Try with a different location."
+msgstr ""
+
+#: src/controls/NewArchiveDialog.qml:170
+#, kde-format
+msgid "File name can not be empty."
+msgstr ""
+
+#: src/controls/NewArchiveDialog.qml:179
+#, kde-format
+msgid "File already exists. Try with another name."
+msgstr ""
+
+#: src/controls/NewArchiveDialog.qml:183
+#, kde-format
+msgid "Looks good"
+msgstr ""
