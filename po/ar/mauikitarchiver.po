@@ -205,12 +205,12 @@ msgstr "الموقع الأساسي غير موجود. حاول مع موقع م
 #: src/controls/NewArchiveDialog.qml:170
 #, kde-format
 msgid "File name can not be empty."
-msgstr "لا يمكن أن يكون اسم الملف فارغاً."
+msgstr "لا يمكن أن يكون اسم الملف فارغًا."
 
 #: src/controls/NewArchiveDialog.qml:179
 #, kde-format
 msgid "File already exists. Try with another name."
-msgstr "الملف موجود مسبقاً. حاول باسم آخر."
+msgstr "الملف موجود مسبقًا. حاول باسم آخر."
 
 #: src/controls/NewArchiveDialog.qml:183
 #, kde-format
