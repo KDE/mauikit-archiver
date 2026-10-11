@@ -1,0 +1,215 @@
+# Translation of mauikitarchiver into Russian.
+# This file is distributed under the same license as the mauikit-archiver package.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mauikitarchiver\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2025-11-17 11:51+0000\n"
+"PO-Revision-Date: 2026-10-10 13:07+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#: src/controls/ArchivePage.qml:30
+#, kde-format
+msgid "Archive Ready"
+msgstr "Архив готов"
+
+#: src/controls/ArchivePage.qml:30
+#, kde-format
+msgid "The new file is now ready."
+msgstr "Новый файл готов."
+
+#: src/controls/ArchivePage.qml:33 src/controls/ArchivePage.qml:44
+#, kde-format
+msgid "Failed"
+msgstr "Ошибка"
+
+#: src/controls/ArchivePage.qml:33
+#, kde-format
+msgid "The archive could not be created."
+msgstr "Не удалось создать архив."
+
+#: src/controls/ArchivePage.qml:41
+#, kde-format
+msgid "Extraction Ready"
+msgstr "Извлечение завершено"
+
+#: src/controls/ArchivePage.qml:41
+#, kde-format
+msgid "The archive contents have been extracted."
+msgstr "Содержимое архива извлечено."
+
+#: src/controls/ArchivePage.qml:44
+#, kde-format
+msgid "The extraction has failed."
+msgstr "Не удалось извлечь данные."
+
+#: src/controls/ArchivePage.qml:56
+#, kde-format
+msgid "Search"
+msgid_plural "Search %1 files"
+msgstr[0] "Поиск среди %1 файла"
+msgstr[1] "Поиск среди %1 файлов"
+msgstr[2] "Поиск среди %1 файлов"
+msgstr[3] "Поиск"
+
+#: src/controls/ArchivePage.qml:80 src/controls/ExtractDialog.qml:21
+#, kde-format
+msgid "Extract"
+msgstr "Извлечь"
+
+#: src/controls/ArchivePage.qml:85
+#, kde-format
+msgid "Extract to..."
+msgstr "Извлечь в…"
+
+#: src/controls/ArchivePage.qml:120
+#, kde-format
+msgid "Name"
+msgstr "Имя"
+
+#: src/controls/ArchivePage.qml:129
+#, kde-format
+msgid "Date"
+msgstr "Дата"
+
+#: src/controls/ArchivePage.qml:138
+#, kde-format
+msgid "Size"
+msgstr "Размер"
+
+#: src/controls/ArchivePage.qml:163
+#, kde-format
+msgid "Compress"
+msgstr "Сжать"
+
+#: src/controls/ArchivePage.qml:164
+#, kde-format
+msgid "Drop files in here to compress them."
+msgstr "Перетащите сюда файлы для сжатия."
+
+#: src/controls/ArchivePage.qml:213
+#, kde-format
+msgid "Preview"
+msgstr "Просмотр"
+
+#: src/controls/ArchivePage.qml:220 src/controls/NewArchiveDialog.qml:76
+#, kde-format
+msgid "Open"
+msgstr "Открыть"
+
+#: src/controls/ArchivePage.qml:226
+#, kde-format
+msgid "Open with"
+msgstr "Открыть с помощью"
+
+#: src/controls/ArchivePage.qml:233
+#, kde-format
+msgid "Delete"
+msgstr "Удалить"
+
+#: src/controls/ArchivePage.qml:255
+#, kde-format
+msgid "Add here"
+msgstr "Добавить сюда"
+
+#: src/controls/ArchivePage.qml:256
+#, kde-format
+msgid "Drop files in here to add them to the archive."
+msgstr "Чтобы добавить файлы в архив, перетащите их сюда."
+
+#: src/controls/ExtractDialog.qml:22
+#, kde-format
+msgid "Extract the contents of the compressed file"
+msgstr "Извлечь содержимое сжатого файла"
+
+#: src/controls/ExtractDialog.qml:81
+#, kde-format
+msgid "A directory with the same name already exists!"
+msgstr "Папка с таким именем уже существует."
+
+#: src/controls/ExtractDialog.qml:84
+#, kde-format
+msgid "The name looks good"
+msgstr "Подходящее имя"
+
+#: src/controls/NewArchiveDialog.qml:38
+#, kde-format
+msgid "Compress %1 file into a new archive"
+msgid_plural "Compress %1 files into a new archive"
+msgstr[0] "Сжать %1 файл в новый архив"
+msgstr[1] "Сжать %1 файла в новый архив"
+msgstr[2] "Сжать %1 файлов в новый архив"
+msgstr[3] "Сжать %1 файл в новый архив"
+
+#: src/controls/NewArchiveDialog.qml:43
+#, kde-format
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/controls/NewArchiveDialog.qml:53
+#, kde-format
+msgid "Create"
+msgstr "Создать"
+
+#: src/controls/NewArchiveDialog.qml:61
+#, kde-format
+msgid ""
+"Some error occured. Maybe current user does not have permission for writing "
+"in this directory."
+msgstr ""
+"Произошла ошибка. Возможно, у текущего пользователя нет прав на запись в эту "
+"папку."
+
+#: src/controls/NewArchiveDialog.qml:96
+#, kde-format
+msgid "File compressed successfully"
+msgstr "Файл успешно сжат"
+
+#: src/controls/NewArchiveDialog.qml:96
+#, kde-format
+msgid "Failed to compress"
+msgstr "Не удалось сжать"
+
+#: src/controls/NewArchiveDialog.qml:106
+#, kde-format
+msgid "Archive name"
+msgstr "Имя архива"
+
+#: src/controls/NewArchiveDialog.qml:118
+#, kde-format
+msgid "Destination"
+msgstr "Место назначения"
+
+#: src/controls/NewArchiveDialog.qml:119
+#, kde-format
+msgid "The final location of the new archive"
+msgstr "Итоговое расположение нового архива"
+
+#: src/controls/NewArchiveDialog.qml:164
+#, kde-format
+msgid "Base location does not exists. Try with a different location."
+msgstr "Указанное расположение не существует. Выберите другое."
+
+#: src/controls/NewArchiveDialog.qml:170
+#, kde-format
+msgid "File name can not be empty."
+msgstr "Имя файла не может быть пустым."
+
+#: src/controls/NewArchiveDialog.qml:179
+#, kde-format
+msgid "File already exists. Try with another name."
+msgstr "Файл уже существует. Укажите другое имя."
+
+#: src/controls/NewArchiveDialog.qml:183
+#, kde-format
+msgid "Looks good"
+msgstr "Всё в порядке"
